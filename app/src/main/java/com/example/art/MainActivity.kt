@@ -61,7 +61,7 @@ fun CardNumberOne(){
                     .fillMaxWidth()
             ) {
                 Text(
-                    text = "Nome Do Autor"
+                    text = "Nome Do Personagem"
                 )
 
                 Text(
