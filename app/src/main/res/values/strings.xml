@@ -1,3 +1,26 @@
 <resources>
     <string name="app_name">ART</string>
+    <string name="Poster">Jujutsu Kaisen</string>
+    <string name="Poster_descrição">
+        Jujutsu Kaisen é um mangá japonês escrito e ilustrado por Gege Akutami, serializado na Weekly Shōnen Jump desde 5 de março de 2018. Os capítulos individuais são compilados em volume tankōbon, e publicados pela Shueisha desde julho de 2018. A série é licenciada e publicada no Brasil pela editora Panini.
+    </string>
+    <string name="Nome_do_personagem_1">Nanammi</string>
+    <string name="Nome_do_personagem_1_descrição">Nanammi é um personagem reservado, antisocial, impatico, esforçado e trabalha duro.
+    </string>
+    <string name="Nome_do_personagem_2">Maki Zenin</string>
+    <string name="Nome_do_personagem_2_descrição">Maki é uma pessoa muito teimosa e direta, que tende a ser bem direta. Ela é obstinada e se motiva a escapar dos laços de sua Família de Feiticeiros. Por toda a sua vida, ela foi maltratada e rebaixada por ser uma mulher e não feiticeira pelos Zenins.
+    </string>
+    <string name="Nome_do_personagem_3">Megumi Fushiguro</string>
+    <string name="Nome_do_personagem_3_descrição">mbora aparentemente estóico e calculista, Megumi deseja ajudar a proteger as pessoas que ele considera boas ou gentis. Ele acredita que o mundo é injusto e que um Feiticeiro é uma ferramenta para garantir que pessoas boas tenham mais chances de viver.
+    </string>
+    <string name="Nome_do_personagem_4">Sakuna</string>
+    <string name="Nome_do_personagem_4_descrição">Sukuna é egoísta, de coração frio, imoral e excepcionalmente sádico.
+    </string>
+    <string name="Nome_do_personagem_5">Nobara Kugisaki</string>
+    <string name="Nome_do_personagem_5_descrição">Nobara Kugisaki é uma mulher impetuosa e autoconfiante que acredita fortemente em ser "verdadeira" consigo mesma. Ela se orgulha de sua aparência física, ofendendo-se muito com qualquer um que a insulte ou tente bater em seu rosto. Ela também é muito falante durante a batalha, menosprezando e insultando verbalmente seus oponentes, mesmo à beira da morte.
+    </string>
+    <string name="Nome_do_personagem_6">Saturo Gojo</string>
+    <string name="Nome_do_personagem_6_descrição">Satoru Gojo é um homem alto, muito mais alto que seus alunos, e aparentemente é considerado atraente por muitas mulheres. Ele tem cabelo branco que geralmente é espetado para cima, mas Gojo o deixa solto quando está em um traje mais casual.
+    </string>
+
 </resources>
