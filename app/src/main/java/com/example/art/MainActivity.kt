@@ -1,6 +1,7 @@
 package com.example.art
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -10,7 +11,6 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -33,6 +33,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.art.ui.theme.ARTTheme
+import org.w3c.dom.Text
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -50,6 +51,8 @@ class MainActivity : ComponentActivity() {
 fun CardNumberOne(){
 
     var photo by remember { mutableStateOf(1) }
+
+    var simples by remember { mutableStateOf(1) }
 
     Surface (
         modifier = Modifier
@@ -140,30 +143,29 @@ fun CardNumberOne(){
 
             }
         }
-        Row (
-            verticalAlignment = Alignment.Bottom,
-            horizontalArrangement = Arrangement.SpaceEvenly,
-            modifier = Modifier
-                .padding(50.dp)
-        )
-        {
-            Button(
-                onClick = { /*TODO*/ })
-            {
-                Text(text = "Anterior")
-            }
 
-            Button(
-                onClick = { /*TODO*/ })
-            {
-                Text(text = "Avançar")
-            }
+     }
+
+    SimplesButton(
+        R.string.antes,
+        simplesButton = {
+
         }
-    }
-}
+
+    )
+    SimplesButton(
+        R.string.next,
+        simplesButton = {
+
+        }
+    )
+
+  }
+
+
 
 @Composable
-fun NumberImage(recursoTextId: Int,recursoTextDescrição: Int, recursoImageId: Int, onImageClick:()-> Unit){
+fun NumberImage(recursoTextId: Int,recursoTextDescricao: Int, recursoImageId: Int, onImageClick:()-> Unit){
 
 
     Column(
@@ -174,7 +176,7 @@ fun NumberImage(recursoTextId: Int,recursoTextDescrição: Int, recursoImageId: 
 
         Image(
             painter = painterResource(id = recursoImageId) ,
-            contentDescription = null,
+            contentDescription = "1",
             modifier = Modifier
                 .padding(15.dp)
                 .border(
@@ -197,7 +199,7 @@ fun NumberImage(recursoTextId: Int,recursoTextDescrição: Int, recursoImageId: 
         )
 
         Text(
-            text = stringResource(id = recursoTextDescrição),
+            text = stringResource(id = recursoTextDescricao),
             fontSize = 12.sp,
             modifier = Modifier
                 .fillMaxWidth(),
@@ -206,5 +208,34 @@ fun NumberImage(recursoTextId: Int,recursoTextDescrição: Int, recursoImageId: 
         )
 
 
+    }
+}
+
+@Composable
+fun SimplesButton (recursoTextSimples: Int, simplesButton:() -> Unit){
+
+    Row(verticalAlignment = Alignment.Bottom,
+        horizontalArrangement = Arrangement.SpaceEvenly,
+        modifier = Modifier
+            .padding(50.dp))
+    {
+        Button(onClick = simplesButton
+
+
+        )
+        {
+            Text(
+                text = stringResource(id = recursoTextSimples )
+            )
+        }
+
+        Button(onClick = simplesButton
+
+        )
+        {
+            Text(
+                text = stringResource(id = recursoTextSimples)
+            )
+        }
     }
 }
