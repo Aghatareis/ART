@@ -40,7 +40,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ARTTheme {
                     CardNumberOne()
-                    ClickSimples()
+                    
                 }
             }
         }
@@ -51,6 +51,8 @@ class MainActivity : ComponentActivity() {
 fun CardNumberOne() {
 
     var photo by remember { mutableStateOf(1) }
+
+    var tela = 1
 
     Surface(
         modifier = Modifier
@@ -144,10 +146,20 @@ fun CardNumberOne() {
         }
 
     }
+    when(photo){
+      1 -> ClickSimples(
+          recursoText = R.string.next, onClickProximo = { tela++ },
+          recurso = R.string.antes, onClickAnterior = {tela--}
+      )
 
-    ClickSimples(
+      2 -> ClickSimples(recursoText = R.string.next, onClickProximo = { tela-- },
+          recurso = R.string.antes, onClickAnterior = {tela++}
+      )
+    }
 
-    )
+
+
+
 }
 
 
@@ -183,7 +195,7 @@ fun NumberImage(recursoTextId: Int,recursoTextDescricao: Int, recursoImageId: In
             fontSize = 20.sp,
             fontFamily = FontFamily.Monospace,
             modifier = Modifier
-                .padding( 6.dp)
+                .padding(6.dp)
                 .border(
                     BorderStroke(1.dp, color = Color(119, 136, 153))
                 )
@@ -206,10 +218,8 @@ fun NumberImage(recursoTextId: Int,recursoTextDescricao: Int, recursoImageId: In
 }
 
 @Composable
-fun ClickSimples (){
-
-    var result = 1
-
+fun ClickSimples (recursoText: Int,recurso: Int, onClickProximo:() -> Unit, onClickAnterior:() -> Unit){
+    
     Row (verticalAlignment = Alignment.Bottom,
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
@@ -218,19 +228,17 @@ fun ClickSimples (){
             .fillMaxHeight()
     )
     {
-        Button(onClick = {
-            result  = (1..6).random()
-        }) {
-            Text(text = "Anterior",
-
-
+        Button(onClick = onClickAnterior
+            
+        ) {
+            Text(text =  stringResource(id = recurso)
             )
         }
 
-        Button(onClick = {
+        Button(onClick = onClickProximo
 
-        }) {
-            Text(text = "Próximo")
+        ) {
+            Text(text = stringResource(id = recursoText))
         }
     }
 
