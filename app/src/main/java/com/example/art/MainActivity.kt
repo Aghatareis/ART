@@ -1,7 +1,6 @@
 package com.example.art
 
 import android.os.Bundle
-import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.BorderStroke
@@ -11,6 +10,7 @@ import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -33,7 +33,6 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.art.ui.theme.ARTTheme
-import org.w3c.dom.Text
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -41,6 +40,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             ARTTheme {
                     CardNumberOne()
+                    ClickSimples()
                 }
             }
         }
@@ -48,26 +48,24 @@ class MainActivity : ComponentActivity() {
 
 @Preview
 @Composable
-fun CardNumberOne(){
+fun CardNumberOne() {
 
     var photo by remember { mutableStateOf(1) }
 
-    var simples by remember { mutableStateOf(1) }
-
-    Surface (
+    Surface(
         modifier = Modifier
             .fillMaxSize(),
         color = Color.White
-            ){
-        Column (
-            verticalArrangement = Arrangement.Top,
+    ) {
+        Column(
+            verticalArrangement = Arrangement.Bottom,
             horizontalAlignment = Alignment.CenterHorizontally,
             modifier = Modifier
                 .padding(45.dp)
-                )
+        )
         {
             when (photo) {
-                1-> NumberImage(
+                1 -> NumberImage(
                     R.string.Poster,
                     R.string.Poster_descrição,
                     R.drawable.poster,
@@ -97,14 +95,15 @@ fun CardNumberOne(){
                     }
                 )
 
-                4  -> NumberImage(
-                R.string.Nome_do_personagem_3,
-                R.string.Nome_do_personagem_3_descrição,
-                R.drawable.fig,
-                onImageClick = {
-                    photo = 5
-                }
-            )
+                4 -> NumberImage(
+                    R.string.Nome_do_personagem_3,
+                    R.string.Nome_do_personagem_3_descrição,
+                    R.drawable.fig,
+                    onImageClick = {
+                        photo = 5
+                    }
+                )
+
                 5 -> NumberImage(
                     R.string.Nome_do_personagem_4,
                     R.string.Nome_do_personagem_4_descrição,
@@ -133,7 +132,7 @@ fun CardNumberOne(){
                 )
             }
 
-            Column (
+            Column(
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.SpaceAround,
                 modifier = Modifier
@@ -144,23 +143,12 @@ fun CardNumberOne(){
             }
         }
 
-     }
+    }
 
-    SimplesButton(
-        R.string.antes,
-        simplesButton = {
-
-        }
+    ClickSimples(
 
     )
-    SimplesButton(
-        R.string.next,
-        simplesButton = {
-
-        }
-    )
-
-  }
+}
 
 
 
@@ -196,13 +184,19 @@ fun NumberImage(recursoTextId: Int,recursoTextDescricao: Int, recursoImageId: In
             fontFamily = FontFamily.Monospace,
             modifier = Modifier
                 .padding( 6.dp)
+                .border(
+                    BorderStroke(1.dp, color = Color(119, 136, 153))
+                )
         )
 
         Text(
             text = stringResource(id = recursoTextDescricao),
             fontSize = 12.sp,
             modifier = Modifier
-                .fillMaxWidth(),
+                .fillMaxWidth()
+                .border(
+                    BorderStroke(1.5.dp, color = Color(119, 136, 153))
+                ),
             fontFamily = FontFamily.Monospace
 
         )
@@ -212,30 +206,32 @@ fun NumberImage(recursoTextId: Int,recursoTextDescricao: Int, recursoImageId: In
 }
 
 @Composable
-fun SimplesButton (recursoTextSimples: Int, simplesButton:() -> Unit){
+fun ClickSimples (){
 
-    Row(verticalAlignment = Alignment.Bottom,
-        horizontalArrangement = Arrangement.SpaceEvenly,
+    var result = 1
+
+    Row (verticalAlignment = Alignment.Bottom,
+        horizontalArrangement = Arrangement.Center,
         modifier = Modifier
-            .padding(50.dp))
+            .padding(50.dp)
+            .fillMaxWidth()
+            .fillMaxHeight()
+    )
     {
-        Button(onClick = simplesButton
+        Button(onClick = {
+            result  = (1..6).random()
+        }) {
+            Text(text = "Anterior",
 
 
-        )
-        {
-            Text(
-                text = stringResource(id = recursoTextSimples )
             )
         }
 
-        Button(onClick = simplesButton
+        Button(onClick = {
 
-        )
-        {
-            Text(
-                text = stringResource(id = recursoTextSimples)
-            )
+        }) {
+            Text(text = "Próximo")
         }
     }
+
 }
