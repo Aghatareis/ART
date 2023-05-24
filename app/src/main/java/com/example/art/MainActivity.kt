@@ -13,7 +13,9 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
@@ -52,7 +54,7 @@ fun CardNumberOne() {
 
     var photo by remember { mutableStateOf(1) }
 
-    var tela = 1
+    var tela by remember { mutableStateOf(1) }
 
     Surface(
         modifier = Modifier
@@ -152,9 +154,29 @@ fun CardNumberOne() {
           recurso = R.string.antes, onClickAnterior = {tela--}
       )
 
-      2 -> ClickSimples(recursoText = R.string.next, onClickProximo = { tela-- },
-          recurso = R.string.antes, onClickAnterior = {tela++}
+      2 -> ClickSimples(recursoText = R.string.next, onClickProximo = { tela++ },
+          recurso = R.string.antes, onClickAnterior = {tela--}
       )
+
+      3-> ClickSimples(recursoText = R.string.next, onClickProximo = {tela++},
+          recurso = R.string.antes, onClickAnterior = {tela--}
+      )
+
+      4-> ClickSimples(recursoText = R.string.next, onClickProximo = { tela++ },
+          recurso = R.string.antes, onClickAnterior = {tela--}
+      )
+
+       5-> ClickSimples(recursoText = R.string.next, onClickProximo = { tela++ },
+           recurso = R.string.antes, onClickAnterior = {tela--}
+       )
+
+       6-> ClickSimples(recursoText = R.string.next , onClickProximo = {tela++},
+           recurso = R.string.antes, onClickAnterior = {tela--}
+       )
+
+        7-> ClickSimples(recursoText = R.string.next , onClickProximo = { tela++},
+            recurso = R.string.next, onClickAnterior = {tela--}
+        )
     }
 
 
@@ -223,20 +245,23 @@ fun ClickSimples (recursoText: Int,recurso: Int, onClickProximo:() -> Unit, onCl
     Row (verticalAlignment = Alignment.Bottom,
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
-            .padding(50.dp)
-            .fillMaxWidth()
+            .padding(20.dp)
             .fillMaxHeight()
+            .fillMaxWidth()
+
+
     )
     {
-        Button(onClick = onClickAnterior
+        Button(onClick = onClickAnterior,
+            modifier = Modifier
             
         ) {
             Text(text =  stringResource(id = recurso)
             )
         }
 
-        Button(onClick = onClickProximo
-
+        Button(onClick = onClickProximo,
+            modifier = Modifier
         ) {
             Text(text = stringResource(id = recursoText))
         }
