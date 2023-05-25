@@ -13,9 +13,7 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
-import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.Surface
@@ -54,12 +52,11 @@ fun CardNumberOne() {
 
     var photo by remember { mutableStateOf(1) }
 
-    var tela by remember { mutableStateOf(1) }
 
     Surface(
         modifier = Modifier
             .fillMaxSize(),
-        color = Color.White
+        color = Color(211,211,211)
     ) {
         Column(
             verticalArrangement = Arrangement.Bottom,
@@ -150,33 +147,54 @@ fun CardNumberOne() {
     }
     when(photo){
       1 -> ClickSimples(
-          recursoText = R.string.next, onClickProximo = { tela++ },
-          recurso = R.string.antes, onClickAnterior = {tela--}
+          recursoText = R.string.next,
+          onClickProximo = { photo = 2},
+          recurso = R.string.antes,
+          onClickAnterior = {photo = 7}
       )
 
-      2 -> ClickSimples(recursoText = R.string.next, onClickProximo = { tela++ },
-          recurso = R.string.antes, onClickAnterior = {tela--}
+      2 -> ClickSimples(
+          recursoText = R.string.next,
+          onClickProximo = { photo = 3 },
+          recurso = R.string.antes,
+          onClickAnterior = {photo = 1}
       )
 
-      3-> ClickSimples(recursoText = R.string.next, onClickProximo = {tela++},
-          recurso = R.string.antes, onClickAnterior = {tela--}
+      3-> ClickSimples(
+          recursoText = R.string.next,
+          onClickProximo = {photo = 4},
+          recurso = R.string.antes,
+          onClickAnterior = {photo = 2}
       )
 
-      4-> ClickSimples(recursoText = R.string.next, onClickProximo = { tela++ },
-          recurso = R.string.antes, onClickAnterior = {tela--}
+      4-> ClickSimples(
+          recursoText = R.string.next,
+          onClickProximo = { photo = 5},
+          recurso = R.string.antes,
+          onClickAnterior = {photo = 3}
       )
 
-       5-> ClickSimples(recursoText = R.string.next, onClickProximo = { tela++ },
-           recurso = R.string.antes, onClickAnterior = {tela--}
+       5-> ClickSimples(
+           recursoText = R.string.next,
+           onClickProximo = {photo = 6},
+           recurso = R.string.antes,
+           onClickAnterior = {photo = 4}
        )
 
-       6-> ClickSimples(recursoText = R.string.next , onClickProximo = {tela++},
-           recurso = R.string.antes, onClickAnterior = {tela--}
+       6-> ClickSimples(
+           recursoText = R.string.next ,
+           onClickProximo = {photo = 7},
+           recurso = R.string.antes,
+           onClickAnterior = {photo = 5}
        )
 
-        7-> ClickSimples(recursoText = R.string.next , onClickProximo = { tela++},
-            recurso = R.string.next, onClickAnterior = {tela--}
+        7-> ClickSimples(
+            recursoText = R.string.next ,
+            onClickProximo = {},
+            recurso = R.string.antes,
+            onClickAnterior = {photo = 6}
         )
+
     }
 
 
@@ -243,7 +261,7 @@ fun NumberImage(recursoTextId: Int,recursoTextDescricao: Int, recursoImageId: In
 fun ClickSimples (recursoText: Int,recurso: Int, onClickProximo:() -> Unit, onClickAnterior:() -> Unit){
     
     Row (verticalAlignment = Alignment.Bottom,
-        horizontalArrangement = Arrangement.Center,
+        horizontalArrangement = Arrangement.SpaceBetween,
         modifier = Modifier
             .padding(20.dp)
             .fillMaxHeight()
